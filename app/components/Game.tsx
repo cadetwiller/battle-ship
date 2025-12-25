@@ -243,7 +243,7 @@ export default function Game() {
           BATTLESHIP
         </h1>
         <p className="text-cyan-500 text-sm" style={{ fontFamily: 'Arial, sans-serif' }}>
-          NAVAL COMBAT GAME
+          TEST YOUR LUCK IN NAVAL BATTLE!
         </p>
       </header>
 
