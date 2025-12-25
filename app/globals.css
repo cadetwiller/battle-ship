@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030712;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,124 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Retro text glow effect */
+.retro-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+/* 8-bit pixel text style */
+.pixel-text {
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Pulsing glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #22d3ee,
+      0 0 10px #22d3ee,
+      0 0 20px #22d3ee;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px #22d3ee,
+      0 0 20px #22d3ee,
+      0 0 40px #22d3ee,
+      0 0 60px #22d3ee;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Simplified water effect - optimized for performance */
+.water-cell {
+  background: linear-gradient(180deg, #1a4a6a 0%, #0a3a5a 50%, #0a2a4a 100%);
+  /* Remove heavy animations - use simple static gradient */
+}
+
+/* Ship floating - disabled for performance, can re-enable if needed */
+.ship-float {
+  /* animation: ship-bob 2s ease-in-out infinite; */
+}
+
+/* CRT scanline overlay */
+.crt-overlay {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+/* Pixel art style for explosions */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 8-bit explosion grow animation */
+@keyframes pixel-grow {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pixel-grow {
+  animation: pixel-grow 0.1s ease-out;
+}
+
+/* Ship placement hover effect */
+@keyframes ship-hover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Hit marker pulse */
+@keyframes hit-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px #dc2626;
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #dc2626, 0 0 25px #dc2626;
+  }
+}
+
+/* Screen shake for explosions */
+@keyframes screen-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.shake {
+  animation: screen-shake 0.3s ease-in-out;
 }
