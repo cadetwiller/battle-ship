@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { Board, Position, BOARD_SIZE } from '../game/types';
 import Cell from './Cell';
 
@@ -34,8 +35,13 @@ export default function GameBoard({
 }: GameBoardProps) {
   const colLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   
+  const previewSet = useMemo(
+    () => new Set(previewPositions.map(p => `${p.row}-${p.col}`)),
+    [previewPositions]
+  );
+  
   const isPreviewCell = (row: number, col: number) => {
-    return previewPositions.some(p => p.row === row && p.col === col);
+    return previewSet.has(`${row}-${col}`);
   };
 
   return (
